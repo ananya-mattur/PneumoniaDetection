@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <title>Pneumonia Prediction App</title>
+  </head>
+  <body>
+    <header>
+      <h1 class="title">Pneumonia Detection</h1>
+    </header>
+    <div class="container">
+      <div class="row">
+        <div class="col-left">
+          <h2>About</h2>
+          <p>This app uses an ensemble of Convolutional Neural Networks (CNNs) to predict if a given chest X-ray image shows signs of pneumonia. It can be used as a tool to assist doctors and radiologists in their diagnosis.</p>
+          <h2>How to Use</h2>
+          <ol>
+            <li>Upload a chest X-ray image in JPEG or PNG format.</li>
+            <li>Click on the "Predict" button to get the prediction result.</li>
+            <li>Read the disclaimer before submitting.</li>
+          </ol>
+          <h2>Disclaimer</h2>
+          <ol>
+           <li>The predictions made by the model are not guaranteed to be accurate.</li>
+           <li>The model is not intended to replace professional opinions or medical advice.</li>
+           </ol>
+        </div>
+        <div class="col-right">
+          <img src="{{ url_for('static', filename='cover_image.jpg') }}">
+            <form method="post" action="{{ url_for('predict') }}" enctype="multipart/form-data">
+            <label for="image">Upload a chest X-ray image:</label>
+            <input type="file" name="image" id="image" accept=".jpg, .jpeg, .png" required>
+            <input type="submit" value="Predict">
+            <div class="disclaimer">
+              <input type="checkbox" name="disclaimer" id="disclaimer" required>
+              <label for="disclaimer" style="display: inline-block;">I have read and understood the disclaimer.</label>
+            </div>
+          </form>
+          {% if result %}
+              <br><br>
+              <h1> <div class ="result"> RESULT : {{ result }} </div> </h1>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
