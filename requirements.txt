@@ -2,7 +2,7 @@ Flask
 keras
 numpy
 Pillow
-tensorflow
+tensorflow-cpu
 tensorflow_intel
 Werkzeug
 gunicorn
