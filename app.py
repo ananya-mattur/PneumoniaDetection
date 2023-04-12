@@ -53,6 +53,13 @@ def allowed_file(filename):
 def index():
     return render_template('index.html')
 
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
+@app.route('/howtouse')
+def howtouse():
+    return render_template('howtouse.html')
 
 # Define the Flask route for handling image uploads and making predictions
 @app.route('/predict', methods=['POST'])
@@ -85,7 +92,7 @@ def predict():
             result = 'POSITIVE'
 
         # Return the prediction result as a template variable
-        return render_template('index.html', result=result)
+        return render_template('predict.html', result=result, filename=filename)
     
     # If the request method is not POST, return the index page
     return render_template('index.html')
@@ -98,3 +105,4 @@ def page_not_found(e):
 
 if __name__ == '__main__':
     app.run(debug=True)
+  
