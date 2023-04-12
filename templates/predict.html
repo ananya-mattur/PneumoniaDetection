@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <title>Pneumonia Detection App - Prediction Results</title>
+  </head>
+  <body>
+    <header>
+      <h1 class="title">Pneumonia Detection App</h1>
+      <nav>
+        <ul>
+          <li><a href="{{ url_for('index') }}">Home</a></li>
+          <li><a href="{{ url_for('about') }}">About</a></li>
+          <li><a href="{{ url_for('howtouse') }}">How to use</a></li>
+        </ul>
+      </nav>
+    </header>
+    <div class="container">
+      <div class="row">
+        <div class="col-left">
+          {% if result %}
+              <br><br>
+              <h1> <div class ="result"> RESULT : {{ result }} </div> </h1>
+          {% endif %}
+          <h2>Comments</h2>
+          <ul>
+            <li>The predictions made by the model are not guaranteed to be accurate.</li>
+            <li>The model is not intended to replace professional opinions or medical advice.</li>
+          </ul>
+        </div>
+        <div class="col-right">
+          <img src="{{ url_for('static', filename='cover_image.jpg') }}">
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+      <title>Pneumonia Prediction App</title>
+   </head>
+   <body>
+      <header>
+         <h1 class="title">Pneumonia Detection App</h1>
+         <nav>
+            <ul>
+               <li><a href="{{ url_for('index') }}">Home</a></li>
+               <li><a href="{{ url_for('about') }}" >About</a></li>
+               <li><a href="{{ url_for('howtouse') }}" class="current" >How to use</a></li>
+            </ul>
+         </nav>
+      </header>
+      <div class="container">
+         <div class="row">
+            <div class="col-left">
+               <h2>How to Use</h2>
+               <ol>
+                  <li>Upload a chest X-ray image in JPEG or PNG format.</li>
+                  <li>Read the disclaimer and tick the conditional checkbox.</li>
+                  <li>Click on the "Predict" button to get the prediction result.</li>
+                  <li>Wait for your results to appear on the screen. It might take a few seconds.</li>
+               </ol>
+             </div>
+            <div class="col-right">
+               <img src="{{ url_for('static', filename='cover_image.jpg') }}">
+            </div>
+         </div>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+      <title>Pneumonia Detection App</title>
+   </head>
+   <body>
+      <header>
+         <h1 class="title">Pneumonia Detection App</h1>
+         <nav>
+            <ul>
+               <li><a href="{{ url_for('index') }}" class="current">Home</a></li>
+               <li><a href="{{ url_for('about') }}">About</a></li>
+               <li><a href="{{ url_for('howtouse') }}">How to use</a></li>
+            </ul>
+         </nav>
+      </header>
+      <div class="container">
+         <div class="row">
+            <div class="col-left">
+               <form method="post" action="{{ url_for('predict') }}" enctype="multipart/form-data">
+                  <label for="image">Upload a chest X-ray image:</label>
+                  <input type="file" name="image" id="image" accept=".jpg, .jpeg, .png" required>
+                  <h2>Disclaimer</h2>
+                  <ul>
+                     <li>The predictions made by the model are not guaranteed to be accurate.</li>
+                     <li>The model is not intended to replace professional opinions or medical advice.</li>
+                  </ul>
+                  <div class="disclaimer">
+                     <input type="checkbox" name="disclaimer" id="disclaimer" required>
+                     <label for="disclaimer" style="display: inline-block;">I have read and understood the disclaimer.</label>
+                  </div>
+                  <div class="submit-btn">
+                     <input type="submit" value="Predict">
+                  </div>
+               </form>
+            </div>
+            <div class="col-right">
+               <img src="{{ url_for('static', filename='cover_image.jpg') }}">
+            </div>
+         </div>
+      </div>
+   </body>
+</html>
